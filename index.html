@@ -19,28 +19,18 @@ justify-content:center;
 align-items:center;
 height:100vh;
 text-align:center;
-animation:fadeScreen 2s ease-in-out;
+transition:2s;
 }
 
-@keyframes fadeScreen{
-from{opacity:0;}
-to{opacity:1;}
-}
-
+/* Romantic Card */
 .card{
-backdrop-filter: blur(18px);
-background: rgba(255,255,255,0.45);
+backdrop-filter: blur(15px);
+background: rgba(255,255,255,0.4);
 padding:35px;
 border-radius:25px;
 box-shadow:0 20px 60px rgba(0,0,0,0.15);
 position:relative;
 z-index:2;
-max-width:90%;
-}
-
-@keyframes heartbeat{
-0%,100%{transform:scale(1);}
-50%{transform:scale(1.06);}
 }
 
 h1{
@@ -48,12 +38,15 @@ font-family:'Playfair Display',serif;
 color:#d63384;
 font-size:26px;
 animation:heartbeat 2s infinite;
-transition:1s ease;
+}
+
+@keyframes heartbeat{
+0%,100%{transform:scale(1);}
+50%{transform:scale(1.05);}
 }
 
 #tap{
 margin-top:15px;
-color:#555;
 cursor:pointer;
 animation:pulse 1.5s infinite;
 }
@@ -66,21 +59,19 @@ animation:pulse 1.5s infinite;
 .move{
 transform:translateX(250px);
 opacity:0;
+transition:1s;
 }
 
-/* Photo */
 #photo{
 display:none;
 margin-top:20px;
-animation:fadeIn 2s ease forwards;
 }
 
 #photo img{
-width:240px;
+width:220px;
 border-radius:20px;
 box-shadow:0 20px 40px rgba(0,0,0,0.25);
-animation:zoom 10s infinite alternate ease-in-out;
-cursor:pointer;
+animation:zoom 8s infinite alternate;
 }
 
 @keyframes zoom{
@@ -88,76 +79,45 @@ from{transform:scale(1);}
 to{transform:scale(1.08);}
 }
 
-@keyframes fadeIn{
-from{opacity:0; transform:scale(0.9);}
-to{opacity:1; transform:scale(1);}
-}
-
-/* Typing Text */
-#final{
+#musicBox{
 display:none;
-margin-top:18px;
-font-size:16px;
-color:#c2185b;
-min-height:50px;
+margin-top:15px;
 }
 
-/* Sparkles */
-.sparkle{
-position:absolute;
-width:4px;
-height:4px;
-background:white;
-border-radius:50%;
-animation:twinkle 3s infinite alternate;
-z-index:1;
-}
-
-@keyframes twinkle{
-from{opacity:0.2;}
-to{opacity:1;}
-}
-
-/* Petals */
-.petal{
+/* Falling Hearts */
+.heart{
 position:absolute;
 top:-10px;
-font-size:18px;
+color:#ff4d88;
 animation:fall linear infinite;
+font-size:18px;
 }
 
 @keyframes fall{
-to{transform:translateY(110vh) rotate(360deg);}
+to{transform:translateY(110vh);}
 }
 
-/* Butterfly */
-.butterfly{
-position:absolute;
-font-size:26px;
-animation:fly 18s linear infinite;
-z-index:1;
-}
-
-@keyframes fly{
-0%{left:-10%; top:60%;}
-50%{left:50%; top:30%;}
-100%{left:110%; top:50%;}
-}
-
-/* Popup */
-#popup{
+/* Gift Box */
+#giftSection{
 display:none;
-position:fixed;
-top:50%;
-left:50%;
-transform:translate(-50%,-50%);
-background:white;
-padding:25px;
-border-radius:20px;
-box-shadow:0 15px 50px rgba(0,0,0,0.3);
+margin-top:25px;
+}
+
+.gift{
+font-size:60px;
+cursor:pointer;
+animation:bounce 1.5s infinite;
+}
+
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+#giftItems{
+display:none;
+margin-top:15px;
 font-size:20px;
-color:#d63384;
-z-index:5;
 }
 </style>
 </head>
@@ -169,12 +129,10 @@ z-index:5;
 <div id="tap" onclick="startLove()">Tap Me 💕</div>
 
 <div id="photo">
-<img src="Picsart_26-02-22_07-22-51-625.jpg" onclick="secretMessage()">
+<img src="Picsart_26-02-22_07-22-51-625.jpg">
 </div>
 
-<div id="final"></div>
-
-<div id="musicBox" style="display:none; margin-top:15px;">
+<div id="musicBox">
 <iframe style="border-radius:12px"
 src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM"
 width="100%" height="80" frameBorder="0"
@@ -182,10 +140,18 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
 </iframe>
 </div>
 
+<div id="giftSection">
+<div class="gift" onclick="openGift()">🎁</div>
+<div id="giftItems">
+🐼 Panda Toy<br>
+✏️ Kawaii Pencils<br>
+🎀 Cute Erasers<br>
+📎 Lovely Sharpeners<br>
+💖 My Heart For You
+</div>
 </div>
 
-<div id="popup">I Love You Forever 💖🎀</div>
-<div class="butterfly">🦋</div>
+</div>
 
 <script>
 function startLove(){
@@ -197,56 +163,29 @@ document.getElementById("photo").style.display="block";
 },1200);
 
 setTimeout(()=>{
-typeText("You are my most beautiful love in this world 🌸🎀 Forever and always, it’s you 🦋");
-document.getElementById("final").style.display="block";
+document.getElementById("musicBox").style.display="block";
+document.body.style.background="linear-gradient(180deg,#ffe6f2,#fff0f8)";
 },2500);
 
 setTimeout(()=>{
-document.getElementById("musicBox").style.display="block";
+document.getElementById("giftSection").style.display="block";
 },4000);
-
-setTimeout(()=>{
-document.getElementById("popup").style.display="block";
-},7500);
 }
 
-function typeText(text){
-let i=0;
-let speed=40;
-function typing(){
-if(i<text.length){
-document.getElementById("final").innerHTML+=text.charAt(i);
-i++;
-setTimeout(typing,speed);
-}
-}
-typing();
+function openGift(){
+document.getElementById("giftItems").style.display="block";
 }
 
-function secretMessage(){
-alert("You are my favorite notification, my happiest thought, and my forever person 💕");
-}
-
-/* Sparkles */
+/* Falling Hearts */
 setInterval(()=>{
-const s=document.createElement("div");
-s.className="sparkle";
-s.style.left=Math.random()*100+"vw";
-s.style.top=Math.random()*100+"vh";
-document.body.appendChild(s);
-setTimeout(()=>{s.remove();},3000);
-},200);
-
-/* Petals */
-setInterval(()=>{
-const p=document.createElement("div");
-p.className="petal";
-p.innerHTML="🌸";
-p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=(6+Math.random()*6)+"s";
-document.body.appendChild(p);
-setTimeout(()=>{p.remove();},10000);
-},500);
+const h=document.createElement("div");
+h.className="heart";
+h.innerHTML="💖";
+h.style.left=Math.random()*100+"vw";
+h.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(h);
+setTimeout(()=>{h.remove();},10000);
+},400);
 </script>
 
 </body>
