@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Sundhaariiii 🎀</title>
+<title>For My Angel 🎀</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
@@ -22,13 +22,13 @@ text-align:center;
 transition:2s;
 }
 
-/* Card */
+/* Glass Card */
 .card{
-backdrop-filter: blur(18px);
+backdrop-filter: blur(20px);
 background: rgba(255,255,255,0.45);
 padding:35px;
-border-radius:25px;
-box-shadow:0 20px 60px rgba(0,0,0,0.15);
+border-radius:30px;
+box-shadow:0 30px 80px rgba(0,0,0,0.15);
 position:relative;
 z-index:2;
 width:90%;
@@ -40,13 +40,13 @@ h1{
 font-family:'Playfair Display',serif;
 color:#d63384;
 font-size:24px;
-animation:heartbeat 2s infinite;
+animation:glow 2s infinite alternate;
 transition:1s;
 }
 
-@keyframes heartbeat{
-0%,100%{transform:scale(1);}
-50%{transform:scale(1.05);}
+@keyframes glow{
+from{ text-shadow:0 0 5px #ffb6d9;}
+to{ text-shadow:0 0 20px #ff69b4;}
 }
 
 #tap{
@@ -74,14 +74,14 @@ animation:fadeIn 2s forwards;
 
 #photo img{
 width:200px;
-border-radius:20px;
-box-shadow:0 20px 40px rgba(0,0,0,0.25);
-animation:zoom 8s infinite alternate;
+border-radius:25px;
+box-shadow:0 25px 60px rgba(0,0,0,0.25);
+animation:softZoom 10s infinite alternate;
 }
 
-@keyframes zoom{
+@keyframes softZoom{
 from{transform:scale(1);}
-to{transform:scale(1.08);}
+to{transform:scale(1.07);}
 }
 
 @keyframes fadeIn{
@@ -95,7 +95,7 @@ display:none;
 margin-top:15px;
 }
 
-/* Falling Love Symbols */
+/* Falling Hearts */
 .love{
 position:absolute;
 top:-10px;
@@ -111,12 +111,12 @@ to{transform:translateY(110vh);}
 .butterfly{
 position:absolute;
 font-size:24px;
-animation:fly 20s linear infinite;
+animation:fly 25s linear infinite;
 }
 
 @keyframes fly{
 0%{left:-10%; top:60%;}
-50%{left:50%; top:30%;}
+50%{left:50%; top:25%;}
 100%{left:110%; top:50%;}
 }
 
@@ -127,49 +127,52 @@ margin-top:20px;
 }
 
 .gift{
-font-size:60px;
+font-size:70px;
 cursor:pointer;
 position:relative;
+transition:1s;
 }
 
 .lid{
 position:absolute;
-top:-20px;
+top:-25px;
 left:0;
 right:0;
-font-size:40px;
+font-size:45px;
 transition:1s;
 }
 
 .open .lid{
-transform:translateY(-25px) rotate(-20deg);
+transform:translateY(-30px) rotate(-20deg);
 }
 
-#items{
+/* Panda */
+#panda{
 display:none;
-margin-top:10px;
-font-size:18px;
+margin-top:15px;
+font-size:70px;
+animation:bounce 2s infinite;
+filter:drop-shadow(0 0 15px #ffb6d9);
 }
 
-.item{
-opacity:0;
-animation:appear 1s forwards;
+@keyframes bounce{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-12px);}
 }
 
-@keyframes appear{
-to{opacity:1;}
-}
-
-/* Ribbons */
-.ribbon{
+/* Sparkles */
+.sparkle{
 position:absolute;
-font-size:18px;
-animation:float 6s linear infinite;
+width:4px;
+height:4px;
+background:white;
+border-radius:50%;
+animation:twinkle 3s infinite alternate;
 }
 
-@keyframes float{
-0%{transform:translateY(0);}
-100%{transform:translateY(-100vh);}
+@keyframes twinkle{
+from{opacity:0.2;}
+to{opacity:1;}
 }
 </style>
 </head>
@@ -197,14 +200,7 @@ allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-pictur
 <div class="lid">🎀</div>
 🎁
 </div>
-
-<div id="items">
-<div class="item">🐼 Panda Toy</div>
-<div class="item">✏️ Kawaii Pencils</div>
-<div class="item">🎀 Cute Erasers</div>
-<div class="item">📎 Lovely Sharpeners</div>
-<div class="item">💖 My Whole Heart</div>
-</div>
+<div id="panda">🐼</div>
 </div>
 
 </div>
@@ -232,34 +228,29 @@ document.getElementById("giftSection").style.display="block";
 
 function openGift(el){
 el.classList.add("open");
-document.getElementById("items").style.display="block";
-
-let items=document.querySelectorAll(".item");
-items.forEach((item,i)=>{
-item.style.animationDelay=(i*0.6)+"s";
-});
+document.getElementById("panda").style.display="block";
 }
 
 /* Falling Love Symbols */
 setInterval(()=>{
 const l=document.createElement("div");
 l.className="love";
-l.innerHTML="💕";
+l.innerHTML="💖";
 l.style.left=Math.random()*100+"vw";
-l.style.animationDuration=(5+Math.random()*5)+"s";
+l.style.animationDuration=(6+Math.random()*5)+"s";
 document.body.appendChild(l);
 setTimeout(()=>{l.remove();},10000);
 },400);
 
-/* Floating Ribbons */
+/* Sparkles */
 setInterval(()=>{
-const r=document.createElement("div");
-r.className="ribbon";
-r.innerHTML="🎀";
-r.style.left=Math.random()*100+"vw";
-document.body.appendChild(r);
-setTimeout(()=>{r.remove();},6000);
-},800);
+const s=document.createElement("div");
+s.className="sparkle";
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+document.body.appendChild(s);
+setTimeout(()=>{s.remove();},3000);
+},300);
 </script>
 
 </body>
