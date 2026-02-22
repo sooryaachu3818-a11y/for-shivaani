@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,11 +10,10 @@
 <style>
 body{
 margin:0;
-padding:0;
 overflow:hidden;
 font-family:'Poppins',sans-serif;
 background:linear-gradient(180deg,#fff0f5,#ffe4ec);
-transition:2s;
+transition:1.5s;
 }
 
 /* SLIDER */
@@ -40,58 +39,34 @@ position:relative;
 h1{
 font-family:'Playfair Display',serif;
 color:#d63384;
-animation:glow 2s infinite alternate;
-}
-
-@keyframes glow{
-from{text-shadow:0 0 5px #ffb6d9;}
-to{text-shadow:0 0 20px #ff69b4;}
-}
-
-#tap{
-margin-top:20px;
-cursor:pointer;
-animation:pulse 1.5s infinite;
-}
-
-@keyframes pulse{
-0%,100%{opacity:1;}
-50%{opacity:0.4;}
 }
 
 /* PHOTO */
 #photo{
 display:none;
-margin-top:40px;
+margin-top:30px;
 }
 
 #photo img{
 width:220px;
 border-radius:25px;
-box-shadow:0 25px 60px rgba(0,0,0,0.25);
-animation:zoom 10s infinite alternate;
-}
-
-@keyframes zoom{
-from{transform:scale(1);}
-to{transform:scale(1.07);}
+box-shadow:0 20px 50px rgba(0,0,0,0.2);
 }
 
 /* MUSIC */
 #musicBtn{
 display:none;
-margin-top:38px;
+margin-top:35px;
 padding:10px 20px;
 border:none;
 border-radius:20px;
 background:#ff69b4;
 color:white;
-cursor:pointer;
 }
 
 #spotifyPlayer{
 display:none;
-margin-top:38px;
+margin-top:35px;
 border-radius:12px;
 }
 
@@ -102,72 +77,43 @@ top:-10px;
 font-size:18px;
 animation:fall linear infinite;
 }
-
 @keyframes fall{
 to{transform:translateY(110vh);}
 }
 
-/* FLOATING SPARKLES */
-.sparkle{
-position:absolute;
-width:4px;
-height:4px;
-background:white;
-border-radius:50%;
-animation:twinkle 3s infinite alternate;
-}
-
-@keyframes twinkle{
-from{opacity:0.3;}
-to{opacity:1;}
-}
-
-/* PANDA SECTION */
-#pandaContainer{
+/* SLIDE 2 */
+#pandaSection{
 display:none;
 flex-direction:column;
 align-items:center;
 position:relative;
 }
 
-#lightRays{
+/* LIGHT RAYS */
+#rays{
 position:absolute;
-width:220px;
-height:220px;
-background:radial-gradient(circle, rgba(255,182,217,0.6) 0%, rgba(255,182,217,0.2) 40%, transparent 70%);
+width:250px;
+height:250px;
+background:radial-gradient(circle, rgba(255,182,217,0.5) 0%, transparent 70%);
 border-radius:50%;
-animation:rotate 20s linear infinite;
-z-index:-1;
+animation:rotate 15s linear infinite;
+z-index:0;
 }
-
 @keyframes rotate{
 from{transform:rotate(0deg);}
 to{transform:rotate(360deg);}
 }
 
+/* PANDA */
 #panda{
 font-size:90px;
-filter:drop-shadow(0 0 25px #ffb6d9);
+z-index:1;
+margin-bottom:10px;
 animation:bounce 2s infinite;
 }
-
 @keyframes bounce{
 0%,100%{transform:translateY(0);}
 50%{transform:translateY(-12px);}
-}
-
-#pandaGlow{
-width:130px;
-height:25px;
-background:radial-gradient(circle, rgba(255,105,180,0.6), transparent);
-border-radius:50%;
-margin-top:-15px;
-animation:pulseGlow 2s infinite;
-}
-
-@keyframes pulseGlow{
-0%,100%{opacity:0.6;}
-50%{opacity:1;}
 }
 
 /* Romantic Text */
@@ -182,14 +128,8 @@ min-height:60px;
 /* Gift */
 .gift{
 font-size:70px;
+margin-top:40px;
 cursor:pointer;
-margin-top:38px;
-transition:0.5s;
-}
-
-.gift:hover{
-transform:scale(1.1);
-filter:drop-shadow(0 0 20px #ff69b4);
 }
 </style>
 </head>
@@ -201,7 +141,8 @@ filter:drop-shadow(0 0 20px #ff69b4);
 <!-- SLIDE 1 -->
 <div class="slide">
 <h1>Good Morning Sundhaariiii 🎀</h1>
-<div id="tap" onclick="startLove()">Tap Me 💕</div>
+
+<button onclick="startLove()">Tap Me 💕</button>
 
 <div id="photo">
 <img src="Picsart_26-02-22_07-22-51-625.jpg">
@@ -212,20 +153,23 @@ filter:drop-shadow(0 0 20px #ff69b4);
 <iframe id="spotifyPlayer"
 width="80%" height="80"
 frameBorder="0"
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+allow="autoplay; encrypted-media">
 </iframe>
+
 </div>
 
 <!-- SLIDE 2 -->
 <div class="slide">
 
-<div id="pandaContainer">
-<div id="lightRays"></div>
+<div id="pandaSection">
+
+<div id="rays"></div>
+
 <div id="panda">🐼</div>
-<div id="pandaGlow"></div>
-</div>
 
 <div id="romanticText"></div>
+
+</div>
 
 <div class="gift" onclick="openGift()">🎁</div>
 
@@ -243,11 +187,11 @@ document.getElementById("musicBtn").style.display="inline-block";
 
 /* PLAY SONG */
 function playSong(){
-const player=document.getElementById("spotifyPlayer");
-player.src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM?utm_source=generator&autoplay=1";
+let player=document.getElementById("spotifyPlayer");
+player.src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM?autoplay=1";
 player.style.display="block";
+
 document.body.style.background="linear-gradient(180deg,#ffe6f2,#fff0f8)";
-petalSpeed=200;
 
 setTimeout(()=>{
 document.getElementById("slider").style.transform="translateX(-100vw)";
@@ -256,14 +200,16 @@ document.getElementById("slider").style.transform="translateX(-100vw)";
 
 /* OPEN GIFT */
 function openGift(){
-document.getElementById("pandaContainer").style.display="flex";
+let section=document.getElementById("pandaSection");
+section.style.display="flex";
+
 typeText("You are my heaven, my softest love, my forever angel 💖🎀");
 }
 
-/* Typing */
+/* TYPING */
 function typeText(msg){
 let i=0;
-const el=document.getElementById("romanticText");
+let el=document.getElementById("romanticText");
 el.innerHTML="";
 function typing(){
 if(i<msg.length){
@@ -276,39 +222,15 @@ typing();
 }
 
 /* PETALS */
-let petalSpeed=600;
 setInterval(()=>{
-const p=document.createElement("div");
+let p=document.createElement("div");
 p.className="petal";
 p.innerHTML="💕";
 p.style.left=Math.random()*100+"vw";
 p.style.animationDuration=(5+Math.random()*5)+"s";
 document.body.appendChild(p);
 setTimeout(()=>{p.remove();},10000);
-},petalSpeed);
-
-/* Sparkles */
-setInterval(()=>{
-const s=document.createElement("div");
-s.className="sparkle";
-s.style.left=Math.random()*100+"vw";
-s.style.top=Math.random()*100+"vh";
-document.body.appendChild(s);
-setTimeout(()=>{s.remove();},3000);
-},400);
-
-/* Swipe Support */
-let startX=0;
-document.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
-document.addEventListener("touchend",e=>{
-let endX=e.changedTouches[0].clientX;
-if(startX-endX>50){
-document.getElementById("slider").style.transform="translateX(-100vw)";
-}
-if(endX-startX>50){
-document.getElementById("slider").style.transform="translateX(0)";
-}
-});
+},600);
 
 </script>
 
