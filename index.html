@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Favorite Person ❤️</title>
+<title>For You ❤️</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
 
@@ -15,120 +15,94 @@
 }
 
 body {
-    height: 100vh;
     background: linear-gradient(135deg, #ffe6eb, #fff5f7);
     font-family: 'Poppins', sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
+    text-align: center;
+    padding: 20px;
+}
+
+/* Heading */
+h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 38px;
+    color: #ff4d6d;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 20px;
+}
+
+/* Image */
+img {
+    width: 100%;
+    max-width: 380px;
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(255, 105, 135, 0.3);
+    margin-bottom: 20px;
+}
+
+/* Message */
+.message {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+/* Button */
+.button {
+    padding: 12px 25px;
+    border: none;
+    background: #ff4d6d;
+    color: white;
+    border-radius: 25px;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 8px 20px rgba(255,77,109,0.4);
+    transition: 0.3s;
+}
+
+.button:hover {
+    transform: scale(1.05);
+    background: #ff1e4d;
 }
 
 /* Floating hearts */
 .heart {
-    position: absolute;
+    position: fixed;
     bottom: -20px;
     color: rgba(255, 105, 135, 0.6);
     animation: floatUp 8s linear infinite;
 }
 
 @keyframes floatUp {
-    0% {
-        transform: translateY(0) scale(1);
-        opacity: 1;
-    }
-    100% {
-        transform: translateY(-110vh) scale(1.5);
-        opacity: 0;
-    }
-}
-
-/* Main Card */
-.card {
-    background: white;
-    padding: 30px;
-    border-radius: 25px;
-    box-shadow: 0 25px 60px rgba(0,0,0,0.15);
-    text-align: center;
-    max-width: 420px;
-    animation: fadeIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 40px;
-    color: #ff4d6d;
-    margin-bottom: 10px;
-}
-
-.subtitle {
-    font-size: 14px;
-    color: #888;
-    margin-bottom: 20px;
-}
-
-img {
-    width: 100%;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(255, 105, 135, 0.4);
-    margin-bottom: 20px;
-    transition: transform 0.5s ease;
-}
-
-img:hover {
-    transform: scale(1.05);
-}
-
-.message {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-}
-
-.button {
-    margin-top: 20px;
-    padding: 10px 20px;
-    border: none;
-    background: #ff4d6d;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 14px;
-    transition: 0.3s ease;
-}
-
-.button:hover {
-    background: #ff1e4d;
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-110vh); opacity: 0; }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
-    <h1>Good Morning ❤️</h1>
-    <div class="subtitle">To the most special person in my world</div>
+<h1>Good Morning ❤️</h1>
+<div class="subtitle">To the most special person in my world</div>
 
-    <img src="Picsart_26-02-22_07-22-51-625.jpg" alt="Her Photo">
+<img src="Picsart_26-02-22_07-22-51-625.jpg" alt="Her Photo">
 
-    <div class="message">
-        I’m truly sorry for falling asleep last night.<br><br>
-        You mean more to me than I can explain, and I never want you to feel ignored or unimportant.<br><br>
-        I promise to do better, because you deserve nothing less than my best.
-    </div>
-
-    <button class="button" onclick="alert('You make my world brighter every single day ❤️')">
-        Tap Me 💕
-    </button>
+<div class="message">
+I’m truly sorry for falling asleep last night.<br><br>
+You mean more to me than I can explain, and I never want you to feel ignored or unimportant.<br><br>
+I promise to always do better for you.
 </div>
 
+<button class="button" onclick="alert('You make my world brighter every single day ❤️')">
+Tap Me 💕
+</button>
+
 <script>
-// Floating hearts generator
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -140,7 +114,7 @@ setInterval(() => {
     setTimeout(() => {
         heart.remove();
     }, 8000);
-}, 500);
+}, 600);
 </script>
 
 </body>
