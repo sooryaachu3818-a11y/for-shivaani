@@ -3,118 +3,170 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For You ❤️</title>
+<title>For My Sundhaariiii 🎀</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body{
+margin:0;
+padding:0;
+overflow:hidden;
+background:linear-gradient(180deg,#fff0f5,#ffe4ec);
+font-family:'Poppins',sans-serif;
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+text-align:center;
 }
 
-body {
-    background: linear-gradient(135deg, #ffe6eb, #fff5f7);
-    font-family: 'Poppins', sans-serif;
-    text-align: center;
-    padding: 20px;
+/* Glass Blur Card */
+.card{
+backdrop-filter: blur(15px);
+background: rgba(255,255,255,0.4);
+padding:40px;
+border-radius:25px;
+box-shadow:0 15px 40px rgba(0,0,0,0.15);
+transition:1s ease;
 }
 
-/* Heading */
-h1 {
-    font-family: 'Great Vibes', cursive;
-    font-size: 38px;
-    color: #ff4d6d;
-    margin-bottom: 5px;
+h1{
+font-family:'Playfair Display',serif;
+color:#d63384;
+font-size:32px;
+transition:1s ease;
 }
 
-.subtitle {
-    font-size: 14px;
-    color: #777;
-    margin-bottom: 20px;
+#tap{
+margin-top:15px;
+color:#555;
+cursor:pointer;
+animation:pulse 1.5s infinite;
 }
 
-/* Image */
-img {
-    width: 100%;
-    max-width: 380px;
-    border-radius: 20px;
-    box-shadow: 0 15px 40px rgba(255, 105, 135, 0.3);
-    margin-bottom: 20px;
+@keyframes pulse{
+0%{opacity:1;}
+50%{opacity:0.4;}
+100%{opacity:1;}
 }
 
-/* Message */
-.message {
-    font-size: 14px;
-    color: #555;
-    line-height: 1.6;
-    margin-bottom: 20px;
+.move{
+transform:translateX(250px);
+opacity:0;
 }
 
-/* Button */
-.button {
-    padding: 12px 25px;
-    border: none;
-    background: #ff4d6d;
-    color: white;
-    border-radius: 25px;
-    font-size: 14px;
-    cursor: pointer;
-    box-shadow: 0 8px 20px rgba(255,77,109,0.4);
-    transition: 0.3s;
+/* Photo */
+#photo{
+display:none;
+margin-top:20px;
+animation:fadeIn 2s ease forwards;
 }
 
-.button:hover {
-    transform: scale(1.05);
-    background: #ff1e4d;
+#photo img{
+width:260px;
+border-radius:20px;
+box-shadow:0 20px 40px rgba(0,0,0,0.2);
+animation:zoom 8s infinite alternate ease-in-out;
 }
 
-/* Floating hearts */
-.heart {
-    position: fixed;
-    bottom: -20px;
-    color: rgba(255, 105, 135, 0.6);
-    animation: floatUp 8s linear infinite;
+@keyframes zoom{
+from{transform:scale(1);}
+to{transform:scale(1.08);}
 }
 
-@keyframes floatUp {
-    0% { transform: translateY(0); opacity: 1; }
-    100% { transform: translateY(-110vh); opacity: 0; }
+@keyframes fadeIn{
+from{opacity:0; transform:scale(0.9);}
+to{opacity:1; transform:scale(1);}
+}
+
+/* Final Text */
+#final{
+display:none;
+margin-top:20px;
+font-size:18px;
+color:#c2185b;
+animation:fadeIn 3s ease forwards;
+}
+
+/* Falling petals */
+.petal{
+position:absolute;
+top:-10px;
+font-size:20px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{
+transform:translateY(110vh) rotate(360deg);
+}
+}
+
+/* Butterfly */
+.butterfly{
+position:absolute;
+font-size:28px;
+animation:fly 15s linear infinite;
+}
+
+@keyframes fly{
+0%{left:-10%; top:60%;}
+50%{left:50%; top:30%;}
+100%{left:110%; top:50%;}
 }
 </style>
 </head>
 
 <body>
 
-<h1>Good Morning ❤️</h1>
-<div class="subtitle">To the most special person in my world</div>
+<div class="card">
+<h1 id="title">Good Morning Sundhaariiii 🎀</h1>
+<div id="tap" onclick="startLove()">Tap Me 💕</div>
 
-<img src="Picsart_26-02-22_07-22-51-625.jpg" alt="Her Photo">
-
-<div class="message">
-I’m truly sorry for falling asleep last night.<br><br>
-You mean more to me than I can explain, and I never want you to feel ignored or unimportant.<br><br>
-I promise to always do better for you.
+<div id="photo">
+<img src="Picsart_26-02-22_07-22-51-625.jpg">
 </div>
 
-<button class="button" onclick="alert('You make my world brighter every single day ❤️')">
-Tap Me 💕
-</button>
+<div id="final">
+You are my most beautiful love in this world 🌸🎀 <br>
+Forever mine 🦋
+</div>
+</div>
+
+<audio id="music" src="her.mp3"></audio>
+
+<div class="butterfly">🦋</div>
 
 <script>
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    heart.innerHTML = "❤";
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.fontSize = (Math.random() * 20 + 10) + "px";
-    document.body.appendChild(heart);
+function startLove(){
+document.getElementById("title").classList.add("move");
+document.getElementById("tap").style.display="none";
 
-    setTimeout(() => {
-        heart.remove();
-    }, 8000);
-}, 600);
+document.getElementById("music").play();
+
+setTimeout(()=>{
+document.getElementById("photo").style.display="block";
+},1200);
+
+setTimeout(()=>{
+document.getElementById("final").style.display="block";
+},3000);
+}
+
+/* Falling petals generator */
+setInterval(()=>{
+const petal=document.createElement("div");
+petal.className="petal";
+petal.innerHTML="🌸";
+petal.style.left=Math.random()*100+"vw";
+petal.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(petal);
+
+setTimeout(()=>{
+petal.remove();
+},10000);
+},500);
 </script>
 
 </body>
