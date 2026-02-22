@@ -1,172 +1,113 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>For My Sundhaari 🎀</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<title>For My Sundhaariiii 💖</title>
 
 <style>
 body{
-margin:0;
-padding:0;
-font-family:'Poppins',sans-serif;
-background:linear-gradient(180deg,#ffe6f2,#fff0f6);
-overflow-x:hidden;
-text-align:center;
+    margin:0;
+    padding:0;
+    font-family: 'Georgia', serif;
+    text-align:center;
+    background: linear-gradient(to bottom,#ffe6f0,#ffd6eb);
+    overflow-x:hidden;
 }
 
-/* Floating aesthetic hearts */
+/* Falling Hearts */
 .heart{
-position:fixed;
-bottom:-20px;
-font-size:20px;
-animation:floatUp 8s linear infinite;
-opacity:0.6;
+    position:fixed;
+    top:-10px;
+    font-size:20px;
+    animation:fall linear infinite;
+}
+@keyframes fall{
+    to{
+        transform:translateY(100vh);
+    }
 }
 
-@keyframes floatUp{
-0%{transform:translateY(0);opacity:0;}
-20%{opacity:0.8;}
-100%{transform:translateY(-120vh);opacity:0;}
-}
-
-/* Center intro section */
-.intro{
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-transition:1s ease;
-}
-
-.title{
-font-family:'Playfair Display',serif;
-font-size:36px;
-background:linear-gradient(to right,#ff4da6,#d81b60);
--webkit-background-clip:text;
--webkit-text-fill-color:transparent;
-margin-bottom:25px;
-animation:fadeSlide 1.5s ease;
-}
-
-@keyframes fadeSlide{
-from{opacity:0;transform:translateY(40px);}
-to{opacity:1;transform:translateY(0);}
+/* Heading */
+h1{
+    margin-top:120px;
+    font-size:38px;
+    color:#ff1493;
+    text-shadow:0 4px 15px rgba(255,20,147,0.4);
 }
 
 /* Pinterest Button */
-.tap-btn{
-padding:14px 40px;
-border:none;
-border-radius:50px;
-font-size:18px;
-background:linear-gradient(145deg,#ff6fb5,#ff4da6);
-color:white;
-box-shadow:0 8px 25px rgba(255,77,166,0.4);
-cursor:pointer;
-transition:0.4s;
+.pinterest-btn {
+    margin-top: 25px;
+    padding: 14px 35px;
+    font-size: 18px;
+    font-weight: 600;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(135deg, #ff4da6, #ff80bf);
+    color: white;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(255, 77, 166, 0.4);
+    transition: all 0.3s ease;
+    animation: floatButton 2s ease-in-out infinite;
 }
 
-.tap-btn:hover{
-transform:scale(1.07);
-box-shadow:0 12px 35px rgba(255,77,166,0.6);
+.pinterest-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 15px 35px rgba(255, 77, 166, 0.6);
 }
 
-/* Hidden Content */
-.content{
-opacity:0;
-transform:translateY(40px);
-transition:1.2s ease;
-padding-bottom:60px;
+.pinterest-btn:active {
+    transform: scale(0.95);
 }
 
-.content.show{
-opacity:1;
-transform:translateY(0);
+.pinterest-btn::before {
+    content: "";
+    position: absolute;
+    width: 300%;
+    height: 300%;
+    top: -100%;
+    left: -100%;
+    background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 60%);
+    transform: rotate(25deg);
+    animation: shine 3s infinite;
 }
 
-/* Photo */
-.photo{
-width:90%;
-max-width:340px;
-border-radius:25px;
-box-shadow:0 20px 40px rgba(0,0,0,0.15);
-margin-top:20px;
+@keyframes shine {
+    0% { transform: translateX(-100%) rotate(25deg); }
+    100% { transform: translateX(100%) rotate(25deg); }
 }
 
-/* Spotify */
-iframe{
-margin-top:25px;
-border-radius:12px;
-display:none;
+@keyframes floatButton {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-6px); }
+    100% { transform: translateY(0px); }
 }
 
-/* Gift */
-.gift{
-font-size:80px;
-margin-top:40px;
-cursor:pointer;
-transition:0.4s;
+/* Image Section */
+#photoSection{
+    display:none;
+    margin-top:40px;
 }
 
-.gift:hover{
-transform:scale(1.1) rotate(-5deg);
+#photoSection img{
+    width:85%;
+    max-width:350px;
+    border-radius:25px;
+    box-shadow:0 20px 40px rgba(0,0,0,0.2);
 }
 
-/* Panda Section */
-.panda-section{
-display:none;
-margin-top:60px;
-position:relative;
-}
-
-.rays{
-position:absolute;
-top:-30px;
-left:50%;
-transform:translateX(-50%);
-width:250px;
-height:250px;
-background:radial-gradient(circle,#ffb3d9 0%,transparent 70%);
-animation:spin 10s linear infinite;
-z-index:-1;
-}
-
-@keyframes spin{
-0%{transform:translateX(-50%) rotate(0deg);}
-100%{transform:translateX(-50%) rotate(360deg);}
-}
-
-.panda{
-font-size:120px;
-animation:bounce 1.6s ease-in-out infinite;
-filter:drop-shadow(0 0 20px #ff99cc);
-}
-
-@keyframes bounce{
-0%,100%{transform:translateY(0);}
-50%{transform:translateY(-15px);}
-}
-
-/* Typing Romantic Text */
-.romantic{
-margin-top:18px;
-font-family:'Playfair Display',serif;
-font-size:22px;
-color:#d81b60;
-white-space:nowrap;
-overflow:hidden;
-border-right:2px solid #d81b60;
-width:0;
-animation:typing 4s steps(40,end) forwards;
-display:inline-block;
-}
-
-@keyframes typing{
-to{width:300px;}
+/* Play Song Button */
+.song-btn{
+    margin-top:25px;
+    padding:15px 35px;
+    border:none;
+    border-radius:40px;
+    font-size:16px;
+    color:white;
+    background:linear-gradient(135deg,#ff4da6,#ff80bf);
+    box-shadow:0 8px 20px rgba(255,20,147,0.4);
 }
 
 </style>
@@ -174,61 +115,42 @@ to{width:300px;}
 
 <body>
 
-<div class="intro" id="intro">
-<h1 class="title">Good Morning Sundhaariiii 🎀</h1>
-<button class="tap-btn" onclick="startMagic()">Tap Me 💕</button>
+<h1>Good Morning Sundhaariiii 🎀</h1>
+
+<button class="pinterest-btn" onclick="showPhoto()">
+💗 Tap Me 💗
+</button>
+
+<div id="photoSection">
+    <img src="Picsart_26-02-22_07-22-51-625.jpg">
+    <br>
+    <button class="song-btn" onclick="playSong()">🎵 Play Our Song</button>
 </div>
 
-<div class="content" id="content">
-
-<img src="Picsart_26-02-22_07-22-51-625.jpg" class="photo">
-
-<br>
-
-<iframe id="spotifyPlayer" style="width:90%;max-width:350px;height:80px;"
-src="" frameborder="0"
-allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
-</iframe>
-
-<div class="gift" onclick="openGift()">🎁</div>
-
-<div class="panda-section" id="pandaSection">
-<div class="rays"></div>
-<div class="panda">🐼</div>
-<div class="romantic">You are my beautiful love 🎀</div>
-</div>
-
-</div>
+<audio id="music">
+    <source src="her.mp3" type="audio/mpeg">
+</audio>
 
 <script>
-
-/* Floating hearts generator */
-for(let i=0;i<25;i++){
-let heart=document.createElement("div");
-heart.className="heart";
-heart.innerHTML="💖";
-heart.style.left=Math.random()*100+"vw";
-heart.style.animationDuration=(6+Math.random()*5)+"s";
-heart.style.fontSize=(14+Math.random()*20)+"px";
-document.body.appendChild(heart);
+/* Show Photo */
+function showPhoto(){
+    document.getElementById("photoSection").style.display="block";
 }
 
-function startMagic(){
-document.getElementById("intro").style.opacity="0";
-setTimeout(()=>{
-document.getElementById("intro").style.display="none";
-document.getElementById("content").classList.add("show");
-},800);
-
-let player=document.getElementById("spotifyPlayer");
-player.src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM?utm_source=generator&autoplay=1";
-player.style.display="block";
+/* Play Music */
+function playSong(){
+    document.getElementById("music").play();
 }
 
-function openGift(){
-document.getElementById("pandaSection").style.display="block";
+/* Create Falling Hearts */
+for(let i=0;i<20;i++){
+    let heart=document.createElement("div");
+    heart.className="heart";
+    heart.innerHTML="💖";
+    heart.style.left=Math.random()*100+"vw";
+    heart.style.animationDuration=(3+Math.random()*5)+"s";
+    document.body.appendChild(heart);
 }
-
 </script>
 
 </body>
