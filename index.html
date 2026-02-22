@@ -10,107 +10,79 @@
 <style>
 body{
 margin:0;
-overflow:hidden;
 font-family:'Poppins',sans-serif;
 background:linear-gradient(180deg,#fff0f5,#ffe4ec);
+text-align:center;
+overflow-x:hidden;
 transition:1.5s;
 }
 
-/* SLIDER */
-.slider{
-display:flex;
-width:200%;
-height:100vh;
-transition:1s ease;
-}
-
-.slide{
-width:100vw;
-height:100vh;
-display:flex;
-flex-direction:column;
-justify-content:center;
-align-items:center;
-text-align:center;
-position:relative;
-}
-
-/* TITLE */
+/* Title */
 h1{
 font-family:'Playfair Display',serif;
 color:#d63384;
-}
-
-/* PHOTO */
-#photo{
-display:none;
 margin-top:30px;
 }
 
+/* Photo */
 #photo img{
-width:220px;
+width:230px;
 border-radius:25px;
-box-shadow:0 20px 50px rgba(0,0,0,0.2);
+box-shadow:0 25px 60px rgba(0,0,0,0.2);
+margin-top:20px;
 }
 
-/* MUSIC */
-#musicBtn{
-display:none;
-margin-top:35px;
-padding:10px 20px;
-border:none;
-border-radius:20px;
-background:#ff69b4;
-color:white;
-}
-
+/* Music */
 #spotifyPlayer{
-display:none;
 margin-top:35px;
 border-radius:12px;
 }
 
-/* PETALS */
-.petal{
-position:absolute;
-top:-10px;
-font-size:18px;
-animation:fall linear infinite;
-}
-@keyframes fall{
-to{transform:translateY(110vh);}
+/* Gift */
+.gift{
+font-size:75px;
+margin-top:45px;
+cursor:pointer;
+transition:0.4s;
 }
 
-/* SLIDE 2 */
+.gift:hover{
+transform:scale(1.1);
+filter:drop-shadow(0 0 20px #ff69b4);
+}
+
+/* Panda Section */
 #pandaSection{
 display:none;
 flex-direction:column;
 align-items:center;
+margin-top:40px;
 position:relative;
 }
 
-/* LIGHT RAYS */
+/* Light Rays */
 #rays{
 position:absolute;
 width:250px;
 height:250px;
-background:radial-gradient(circle, rgba(255,182,217,0.5) 0%, transparent 70%);
+background:radial-gradient(circle, rgba(255,182,217,0.6) 0%, transparent 70%);
 border-radius:50%;
-animation:rotate 15s linear infinite;
+animation:rotate 18s linear infinite;
 z-index:0;
 }
+
 @keyframes rotate{
 from{transform:rotate(0deg);}
 to{transform:rotate(360deg);}
 }
 
-/* PANDA */
+/* Panda */
 #panda{
-font-size:90px;
+font-size:95px;
 z-index:1;
-margin-bottom:10px;
 animation:bounce 2s infinite;
 }
+
 @keyframes bounce{
 0%,100%{transform:translateY(0);}
 50%{transform:translateY(-12px);}
@@ -118,95 +90,63 @@ animation:bounce 2s infinite;
 
 /* Romantic Text */
 #romanticText{
-margin-top:20px;
+margin-top:25px;
 font-family:'Playfair Display',serif;
 font-size:18px;
 color:#d63384;
 min-height:60px;
 }
 
-/* Gift */
-.gift{
-font-size:70px;
-margin-top:40px;
-cursor:pointer;
+/* Falling Love Symbols */
+.love{
+position:fixed;
+top:-10px;
+font-size:18px;
+animation:fall linear infinite;
+}
+
+@keyframes fall{
+to{transform:translateY(110vh);}
 }
 </style>
 </head>
 
 <body>
 
-<div class="slider" id="slider">
-
-<!-- SLIDE 1 -->
-<div class="slide">
 <h1>Good Morning Sundhaariiii 🎀</h1>
-
-<button onclick="startLove()">Tap Me 💕</button>
 
 <div id="photo">
 <img src="Picsart_26-02-22_07-22-51-625.jpg">
 </div>
 
-<button id="musicBtn" onclick="playSong()">🎵 Play Our Song</button>
-
 <iframe id="spotifyPlayer"
-width="80%" height="80"
+src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM"
+width="85%" height="80"
 frameBorder="0"
 allow="autoplay; encrypted-media">
 </iframe>
 
-</div>
-
-<!-- SLIDE 2 -->
-<div class="slide">
-
-<div id="pandaSection">
-
-<div id="rays"></div>
-
-<div id="panda">🐼</div>
-
-<div id="romanticText"></div>
-
-</div>
-
 <div class="gift" onclick="openGift()">🎁</div>
 
-</div>
-
+<div id="pandaSection">
+<div id="rays"></div>
+<div id="panda">🐼</div>
+<div id="romanticText"></div>
 </div>
 
 <script>
 
-/* START */
-function startLove(){
-document.getElementById("photo").style.display="block";
-document.getElementById("musicBtn").style.display="inline-block";
-}
-
-/* PLAY SONG */
-function playSong(){
-let player=document.getElementById("spotifyPlayer");
-player.src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM?autoplay=1";
-player.style.display="block";
-
-document.body.style.background="linear-gradient(180deg,#ffe6f2,#fff0f8)";
-
-setTimeout(()=>{
-document.getElementById("slider").style.transform="translateX(-100vw)";
-},3000);
-}
-
-/* OPEN GIFT */
+/* Open Gift */
 function openGift(){
 let section=document.getElementById("pandaSection");
 section.style.display="flex";
 
 typeText("You are my heaven, my softest love, my forever angel 💖🎀");
+
+document.body.style.background="linear-gradient(180deg,#ffe6f2,#fff0f8)";
 }
 
-/* TYPING */
+/* Typing Animation */
 function typeText(msg){
 let i=0;
 let el=document.getElementById("romanticText");
@@ -221,16 +161,16 @@ setTimeout(typing,40);
 typing();
 }
 
-/* PETALS */
+/* Falling Love Animation */
 setInterval(()=>{
-let p=document.createElement("div");
-p.className="petal";
-p.innerHTML="💕";
-p.style.left=Math.random()*100+"vw";
-p.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(p);
-setTimeout(()=>{p.remove();},10000);
-},600);
+let love=document.createElement("div");
+love.className="love";
+love.innerHTML="💕";
+love.style.left=Math.random()*100+"vw";
+love.style.animationDuration=(5+Math.random()*5)+"s";
+document.body.appendChild(love);
+setTimeout(()=>{love.remove();},10000);
+},700);
 
 </script>
 
