@@ -3,84 +3,135 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Heaven Mode 🎀</title>
+<title>For My Sundhaari 🎀</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins:wght@300;500&display=swap" rel="stylesheet">
 
 <style>
+
+/* BODY */
 body{
 margin:0;
+padding:0;
 font-family:'Poppins',sans-serif;
-background:linear-gradient(180deg,#fff0f5,#ffe4ec);
-text-align:center;
+background:linear-gradient(to bottom,#fff0f6,#ffe6f2);
 overflow-x:hidden;
-transition:1.5s;
+text-align:center;
+}
+
+/* Falling Love Symbols */
+.heart{
+position:fixed;
+top:-10px;
+font-size:18px;
+animation:fall linear infinite;
+opacity:0.7;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10px);}
+100%{transform:translateY(110vh);}
+}
+
+/* Main Container */
+.container{
+padding:25px;
 }
 
 /* Title */
-h1{
+.title{
 font-family:'Playfair Display',serif;
-color:#d63384;
-margin-top:30px;
+font-size:26px;
+color:#c2185b;
+margin-top:20px;
+animation:slideIn 1.5s ease;
 }
 
-/* Photo */
-#photo img{
-width:230px;
-border-radius:25px;
-box-shadow:0 25px 60px rgba(0,0,0,0.2);
+@keyframes slideIn{
+from{transform:translateX(-100px);opacity:0;}
+to{transform:translateX(0);opacity:1;}
+}
+
+/* Image */
+.photo{
+width:90%;
+max-width:330px;
+border-radius:20px;
+box-shadow:0 15px 35px rgba(0,0,0,0.15);
 margin-top:20px;
 }
 
-/* Music */
-#spotifyPlayer{
-margin-top:35px;
+/* Spotify Player */
+iframe{
+margin-top:20px;
 border-radius:12px;
+display:none;
 }
 
-/* Gift */
-.gift{
-font-size:75px;
-margin-top:45px;
+/* Pinterest Gift */
+.gift-box{
+margin-top:35px;
+display:inline-block;
+padding:20px 35px;
+border-radius:25px;
+background:linear-gradient(145deg,#fff0f6,#ffe4ef);
+box-shadow:0 15px 35px rgba(255,105,180,0.25);
 cursor:pointer;
 transition:0.4s;
-}
-
-.gift:hover{
-transform:scale(1.1);
-filter:drop-shadow(0 0 20px #ff69b4);
-}
-
-/* Panda Section */
-#pandaSection{
-display:none;
-flex-direction:column;
-align-items:center;
-margin-top:40px;
 position:relative;
 }
 
-/* Light Rays */
-#rays{
+.gift-box:hover{
+transform:scale(1.05);
+box-shadow:0 20px 45px rgba(255,105,180,0.4);
+}
+
+.gift-box::after{
+content:"✨";
 position:absolute;
-width:250px;
-height:250px;
-background:radial-gradient(circle, rgba(255,182,217,0.6) 0%, transparent 70%);
-border-radius:50%;
-animation:rotate 18s linear infinite;
-z-index:0;
+right:10px;
+top:5px;
+animation:shine 2s infinite;
+}
+
+@keyframes shine{
+0%{opacity:0;}
+50%{opacity:1;}
+100%{opacity:0;}
+}
+
+.gift-emoji{
+font-size:65px;
+}
+
+/* Panda Section */
+.panda-section{
+display:none;
+margin-top:50px;
+position:relative;
+}
+
+.pink-rays{
+position:absolute;
+top:0;
+left:50%;
+transform:translateX(-50%);
+width:220px;
+height:220px;
+background:radial-gradient(circle,#ffb6d9 0%,transparent 70%);
+animation:rotate 8s linear infinite;
+z-index:-1;
 }
 
 @keyframes rotate{
-from{transform:rotate(0deg);}
-to{transform:rotate(360deg);}
+0%{transform:translateX(-50%) rotate(0deg);}
+100%{transform:translateX(-50%) rotate(360deg);}
 }
 
-/* Panda */
-#panda{
-font-size:95px;
-z-index:1;
-animation:bounce 2s infinite;
+.panda{
+font-size:110px;
+animation:bounce 1.5s infinite ease-in-out;
+filter:drop-shadow(0 0 20px #ff9acb);
 }
 
 @keyframes bounce{
@@ -88,89 +139,91 @@ animation:bounce 2s infinite;
 50%{transform:translateY(-12px);}
 }
 
-/* Romantic Text */
-#romanticText{
-margin-top:25px;
+/* Romantic Typing Text */
+.romantic-text{
+margin-top:15px;
 font-family:'Playfair Display',serif;
-font-size:18px;
-color:#d63384;
-min-height:60px;
+font-size:20px;
+color:#d81b60;
+white-space:nowrap;
+overflow:hidden;
+border-right:2px solid #d81b60;
+width:0;
+animation:typing 4s steps(40,end) forwards;
+display:inline-block;
 }
 
-/* Falling Love Symbols */
-.love{
-position:fixed;
-top:-10px;
-font-size:18px;
-animation:fall linear infinite;
+@keyframes typing{
+to{width:260px;}
 }
 
-@keyframes fall{
-to{transform:translateY(110vh);}
+/* Button */
+.play-btn{
+margin-top:20px;
+padding:12px 25px;
+border:none;
+border-radius:25px;
+background:#ff69b4;
+color:white;
+font-size:15px;
+cursor:pointer;
 }
+
 </style>
 </head>
 
 <body>
 
-<h1>Good Morning Sundhaariiii 🎀</h1>
+<div class="container">
 
-<div id="photo">
-<img src="Picsart_26-02-22_07-22-51-625.jpg">
-</div>
+<h2 class="title">Good Morning Sundhaariiii 🎀</h2>
 
-<iframe id="spotifyPlayer"
-src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM"
-width="85%" height="80"
-frameBorder="0"
-allow="autoplay; encrypted-media">
+<img src="Picsart_26-02-22_07-22-51-625.jpg" class="photo">
+
+<br>
+
+<button class="play-btn" onclick="startLove()">Play Her 🎵</button>
+
+<iframe id="spotifyPlayer" style="width:90%;max-width:350px;height:80px;" 
+src="" frameborder="0" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
 </iframe>
 
-<div class="gift" onclick="openGift()">🎁</div>
+<div class="gift-box" onclick="openGift()">
+<div class="gift-emoji">🎁</div>
+</div>
 
-<div id="pandaSection">
-<div id="rays"></div>
-<div id="panda">🐼</div>
-<div id="romanticText"></div>
+<div class="panda-section" id="pandaSection">
+<div class="pink-rays"></div>
+<div class="panda">🐼</div>
+<div class="romantic-text">You are my beautiful love 🎀</div>
+</div>
+
 </div>
 
 <script>
 
+/* Falling hearts generator */
+for(let i=0;i<20;i++){
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💖";
+heart.style.left=Math.random()*100+"vw";
+heart.style.animationDuration=(3+Math.random()*5)+"s";
+heart.style.fontSize=(12+Math.random()*20)+"px";
+document.body.appendChild(heart);
+}
+
+/* Start music */
+function startLove(){
+let player=document.getElementById("spotifyPlayer");
+player.src="https://open.spotify.com/embed/track/6G9YlbU3ByPJQvOFDRdwyM?autoplay=1";
+player.style.display="block";
+}
+
 /* Open Gift */
 function openGift(){
-let section=document.getElementById("pandaSection");
-section.style.display="flex";
-
-typeText("You are my heaven, my softest love, my forever angel 💖🎀");
-
-document.body.style.background="linear-gradient(180deg,#ffe6f2,#fff0f8)";
+document.getElementById("pandaSection").style.display="block";
 }
-
-/* Typing Animation */
-function typeText(msg){
-let i=0;
-let el=document.getElementById("romanticText");
-el.innerHTML="";
-function typing(){
-if(i<msg.length){
-el.innerHTML+=msg.charAt(i);
-i++;
-setTimeout(typing,40);
-}
-}
-typing();
-}
-
-/* Falling Love Animation */
-setInterval(()=>{
-let love=document.createElement("div");
-love.className="love";
-love.innerHTML="💕";
-love.style.left=Math.random()*100+"vw";
-love.style.animationDuration=(5+Math.random()*5)+"s";
-document.body.appendChild(love);
-setTimeout(()=>{love.remove();},10000);
-},700);
 
 </script>
 
